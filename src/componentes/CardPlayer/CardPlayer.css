@@ -1,0 +1,37 @@
+.cardPlayer {
+    width: 240px;
+}
+
+.cardPlayer .cabecalho {
+    background-color:  #F0F0F0;
+    border-radius: 10px 10px 0px 0px;
+}
+.cardPlayer img {
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    bottom: -50px;
+}
+
+.cardPlayer .rodape {
+    background: #FFFFFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.cardPlayer .rodape h4 {
+    color: #000000;
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.cardPlayer .rodape h5 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+    padding: 0 16px;
+}

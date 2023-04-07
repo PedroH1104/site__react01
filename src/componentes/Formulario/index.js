@@ -3,6 +3,7 @@ import Botao from '../Botao'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = (props) => {    
 
@@ -10,10 +11,12 @@ const Formulario = (props) => {
     const [elo, setElo] = useState('')
     const [funcao, setFuncao] = useState('')
     const [main, setMain] = useState('')
+    const [novoPersonagem, setNovoPersonagem] = useState('')
 
     const aoSubmit = (evento) => {
         evento.preventDefault()
         props.aoCadastrarPlayer({
+            id: uuidv4(),
             nick,
             elo,
             funcao,
@@ -24,12 +27,11 @@ const Formulario = (props) => {
         setElo("")
         setFuncao("")
         setMain("")
+        setNovoPersonagem("")        
     }
 
-
     return (
-        <section className='formulario'>
-            
+        <section className='formulario'>            
             <form onSubmit={aoSubmit}>
                 <h2>Preencha os dados do formulário</h2>
                 <CampoTexto 
@@ -61,6 +63,25 @@ const Formulario = (props) => {
                 </ListaSuspensa>
 
                 <Botao>Enviar dados</Botao>
+            </form>
+            <form onSubmit={(evento => {
+                evento.preventDefault()
+                props.cadastrarNovoPersonagem({ nome: novoPersonagem})
+                setNovoPersonagem("")
+                setNick("")
+                setElo("")
+                setFuncao("")
+                setMain("")
+            })}>
+                <h2>Preencha os dados do formulário para criar um novo personagem</h2>
+                <CampoTexto 
+                    label="Nome do personagem" 
+                    placeholder="ex: Reaper, Genji, Xayah"
+                    valor = {novoPersonagem}
+                    aoAlterar={valor => setNovoPersonagem(valor)}>                   
+                </CampoTexto>          
+
+                <Botao>Criar Personagem</Botao>
             </form>
         </section>
     )
